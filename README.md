@@ -10,4 +10,4 @@
 ## Notes:
 
 * treat Plural Kit groups as subsystems
-*   perhaps rename HashMap<String, Sys> subsystem to HashMap<String, Sys> groups
+* perhaps rename `HashMap<String, Sys>` subsystem to `HashMap<String, Sys>` groups
