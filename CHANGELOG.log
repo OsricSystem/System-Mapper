@@ -10,3 +10,13 @@ prototype 2
 	Headmate.java
 		-added getters, setters, and clear methods for all vars
 		-added Headmate.toString()
+
+prototype 3
+	Main.java
+		-refactored
+	Headmate.java
+		-moved to models folder and refactored
+	Subsystem.java
+		-deleted and incorporated within Sys.java
+	Sys.java
+		-moved to models folder and refactored
