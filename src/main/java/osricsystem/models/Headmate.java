@@ -1,4 +1,4 @@
-package release.models;
+package osricsystem.models;
 
 import java.util.LinkedList;
 

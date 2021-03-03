@@ -20,3 +20,6 @@ prototype 3
 		-deleted and incorporated within Sys.java
 	Sys.java
 		-moved to models folder and refactored
+
+prototype 4
+	-refactored project to use Maven and implemented basic JSON testing

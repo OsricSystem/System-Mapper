@@ -1,4 +1,4 @@
-package release.models;
+package osricsystem.models;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -30,7 +30,6 @@ public class Sys{
 
 	// other
 	public void add(Headmate h){ this.headmates.add(h); }
-
 	public String toString(){
 		StringBuilder sb=new StringBuilder();
 
