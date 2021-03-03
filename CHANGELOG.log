@@ -2,24 +2,47 @@ CHANGE LOG
 
 prototype 2
 	Main.java
-		-rudimentary read-write capibilities with data.dat
+		- rudimentary read-write capibilities with data.dat
 	Sys.java
-		-added getter and setter methods
-		-added Sys.add(Headmate h) to add headmates to the system
-		-added Sys.toString()
+		- added getter and setter methods
+		- added Sys.add(Headmate h) to add headmates to the system
+		- added Sys.toString()
 	Headmate.java
-		-added getters, setters, and clear methods for all vars
-		-added Headmate.toString()
+		- added getters, setters, and clear methods for all vars
+		- added Headmate.toString()
 
 prototype 3
 	Main.java
-		-refactored
+		- refactored
 	Headmate.java
-		-moved to models folder and refactored
+		- moved to models folder and refactored
 	Subsystem.java
-		-deleted and incorporated within Sys.java
+		- deleted and incorporated within Sys.java
 	Sys.java
-		-moved to models folder and refactored
+		- moved to models folder and refactored
 
 prototype 4
-	-refactored project to use Maven and implemented basic JSON testing
+	- refactored project to use Maven and implemented basic JSON testing
+
+prototype 5
+	Main.java
+		- added comments
+		- created clear()
+		* init()
+			- no longer writes immediately to data.dat
+		* setup()
+			- changed if statement to switch-case block for more streamlined handling in future
+		* end()
+			- will now store data before closing
+		* write(String name, String... types)
+			- renamed to store()
+			- clears data.dat, then writes all of program memory to data.dat in the proper format
+	Sys.java
+		- suppressed warnings related to unused variables
+	Headmate.java
+		* toString()
+			- changed whitespace inside StringBuilder.append statements to leave a more visually pleasing format in data.dat
+	PKSystem.java
+		- now in compliance with formatting standard
+	PKMmeber.java
+		- now in compliance with formatting standard

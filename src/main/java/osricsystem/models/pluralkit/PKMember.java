@@ -6,22 +6,22 @@ import com.fasterxml.jackson.annotation.JsonSetter;
 import osricsystem.models.Headmate;
 
 public class PKMember{
-    private String name;
+	private String name;
 
-    public PKMember(){}
-    public static PKMember fromNative(Headmate headmate){
-        PKMember result=new PKMember();
+	public PKMember(){}
+	public static PKMember fromNative(Headmate headmate){
+		PKMember result=new PKMember();
 
-        result.setName(headmate.getName());
+		result.setName(headmate.getName());
 
-        return result;
-    }
+		return result;
+	}
 
-    // GETTERS \\
-    @JsonGetter
-    public String getName(){ return this.name; }
+	// GETTERS \\
+	@JsonGetter
+	public String getName(){ return this.name; }
 
-    // SETTERS \\
-    @JsonSetter
-    public void setName(String name){ this.name=name; }
+	// SETTERS \\
+	@JsonSetter
+	public void setName(String name){ this.name=name; }
 }

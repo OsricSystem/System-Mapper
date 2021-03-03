@@ -6,6 +6,7 @@ import java.util.LinkedList;
 public class Sys{
 	private String name, desc;
 	private final LinkedList<Headmate> headmates;
+	@SuppressWarnings("unused")
 	private final HashMap<String, Sys> subsystems;
 
 	public Sys(String name){

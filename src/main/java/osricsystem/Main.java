@@ -29,12 +29,14 @@ public class Main{
 			system.add(new Headmate("Tayto"));
 			// edit();
 
+			// XML formatter
 			ObjectMapper mapper=new ObjectMapper();
 			DefaultIndenter indenter=new DefaultIndenter("\t", DefaultIndenter.SYS_LF);
 			DefaultPrettyPrinter printer=new DefaultPrettyPrinter();
 			printer.indentObjectsWith(indenter);
 			printer.indentArraysWith(indenter);
 
+			// interacts with PK API and handles JSON
 			PKSystem pkSystem=PKSystem.fromNative(system);
 			File jsonFile=new File("data.json").getAbsoluteFile();
 			mapper.writer(printer).writeValue(jsonFile, pkSystem);
@@ -46,16 +48,14 @@ public class Main{
 
 		end();
 	}
+
+	// initalises storage files if they do not exist or are empty
 	private static void init(){
 		System.out.println("Enter System Name:");
 		system=new Sys(in.nextLine());
-
-		try(FileWriter w=new FileWriter(file.getPath())){
-			w.write("System Name:"+system.getName());
-		}catch(IOException e){
-			e.printStackTrace();
-		}
 	}
+
+	// reads system data into program memory
 	private static void setup(){
 		try(Scanner reader=new Scanner(file)){
 			while(reader.hasNextLine()){
@@ -63,12 +63,19 @@ public class Main{
 				int index=line.indexOf(':');
 				String label=line.substring(0, index);
 				String data=line.substring(index+1);
-				if(label.equals("System Name")) system=new Sys(data);
+				switch(label){
+				case "System Name":
+					system=new Sys(data);
+					break;
+				}
 			}
 		}catch(Exception e){
 			e.printStackTrace();
 		}
 	}
+
+	// main way end user interacts with program
+	@SuppressWarnings("unused")
 	private static void edit(){
 		System.out.println("Entering Edit Mode\ntype 'EXIT' to quit");
 		while(true){
@@ -76,11 +83,15 @@ public class Main{
 			if(inp.equals("EXIT")) break;
 		}
 	}
+
+	// end of program handler
 	private static void end(){
 		if(!file.exists()){
 			System.out.println("Unable to read generated file");
 			return;
 		}
+
+		store();
 
 		try(Scanner out=new Scanner(file)){
 			while(out.hasNextLine()) System.out.println(out.nextLine());
@@ -88,13 +99,23 @@ public class Main{
 			e.printStackTrace();
 		}
 	}
-	private static void write(String name, String... types){
+
+	// potentially used in the future to handle writing to files
+	private static void store(){
+		clear();
+		try(FileWriter w=new FileWriter(file.getPath())){
+			w.write(system.toString());
+		}catch(IOException e){
+			e.printStackTrace();
+		}
+	}
+
+	// clears files to have a clean start, useful for debugging
+	private static void clear(){
 		try{
-			FileWriter w=new FileWriter("data.dat");
-			if(types.length==1 && types[0].equals("newSystem")){
-				w.write(String.format("systemname:%s\ndesc:\nheadmates:", name));
-			}
-			w.close();
-		}catch(IOException e){}
+			new FileWriter(file.getAbsoluteFile(), false).close();
+		}catch(IOException e){
+			e.printStackTrace();
+		}
 	}
 }
