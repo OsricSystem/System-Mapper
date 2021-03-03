@@ -1,12 +1,12 @@
-package release;
+package tester;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
-import release.models.Headmate;
-import release.models.Sys;
+import tester.models.Headmate;
+import tester.models.Sys;
 
 public class Main{
 	private static Scanner in;
@@ -29,6 +29,7 @@ public class Main{
 
 		end();
 	}
+
 	private static void init(){
 		System.out.println("Enter System Name:");
 		system=new Sys(in.nextLine());
@@ -39,6 +40,7 @@ public class Main{
 			e.printStackTrace();
 		}
 	}
+
 	private static void setup(){
 		try(Scanner reader=new Scanner(file)){
 			while(reader.hasNextLine()){
@@ -52,6 +54,7 @@ public class Main{
 			e.printStackTrace();
 		}
 	}
+
 	private static void edit(){
 		System.out.println("Entering Edit Mode\ntype 'EXIT' to quit");
 		while(true){
@@ -59,6 +62,7 @@ public class Main{
 			if(inp.equals("EXIT")) break;
 		}
 	}
+
 	private static void end(){
 		if(!file.exists()){
 			System.out.println("Unable to read generated file");
@@ -71,6 +75,7 @@ public class Main{
 			e.printStackTrace();
 		}
 	}
+
 	private static void write(String name, String... types){
 		try{
 			FileWriter w=new FileWriter("data.dat");
