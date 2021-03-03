@@ -1,0 +1,6 @@
+# Java files
+**/*.class
+
+# App files
+data.dat
+data.json
