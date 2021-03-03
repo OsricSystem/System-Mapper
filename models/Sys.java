@@ -1,4 +1,4 @@
-package tester.models;
+package release.models;
 
 import java.util.HashMap;
 import java.util.LinkedList;

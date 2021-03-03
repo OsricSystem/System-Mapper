@@ -1,12 +1,12 @@
-package tester;
+package release;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
-import tester.models.Headmate;
-import tester.models.Sys;
+import release.models.Headmate;
+import release.models.Sys;
 
 public class Main{
 	private static Scanner in;

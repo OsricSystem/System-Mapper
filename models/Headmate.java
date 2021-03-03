@@ -1,4 +1,4 @@
-package tester.models;
+package release.models;
 
 import java.util.LinkedList;
 
