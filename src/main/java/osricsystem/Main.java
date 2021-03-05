@@ -120,7 +120,6 @@ public class Main{
 		Files.writeString(datFile.toPath(), system.toString());
 	}
 
-		}
 	// write the system to a file
 	private static void saveSystemJson() throws JsonMappingException, JsonProcessingException, IOException{
 		// ensure output directory exists
