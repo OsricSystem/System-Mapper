@@ -47,12 +47,12 @@ public class Headmate{
 	public String toString(){
 		StringBuilder sb=new StringBuilder();
 
-		sb.append("\n\tName: "+ (name!=null? getName(): ""));
-		sb.append("\n\tPronouns: "+ (pronouns!=null? getPronouns(): ""));
-		sb.append("\n\tSubsystem: "+ (subsystem!=null? getSubsystem(): ""));
-		sb.append("\n\tGender: "+ (gender!=null? getGender(): ""));
-		sb.append("\n\tAge: "+ (age!=null? getAge(): ""));
-		sb.append("\n\tBio: "+ (desc!=null? getDesc(): ""));
+		sb.append("\n\tName:"+ (name!=null? getName(): ""));
+		sb.append("\n\tPronouns:"+ (pronouns!=null? getPronouns(): ""));
+		sb.append("\n\tSubsystem:"+ (subsystem!=null? getSubsystem(): ""));
+		sb.append("\n\tGender:"+ (gender!=null? getGender(): ""));
+		sb.append("\n\tAge:"+ (age!=null? getAge(): ""));
+		sb.append("\n\tBio:"+ (desc!=null? getDesc(): ""));
 
 		return sb.toString();
 	}

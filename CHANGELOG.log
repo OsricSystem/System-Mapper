@@ -46,3 +46,15 @@ PKSystem.java
 	- now in compliance with formatting standard
 PKMmeber.java
 	- now in compliance with formatting standard
+
+prototype 6
+Sys.java
+	- added add(Headmate... headmates)
+	- patched bug that lead to extra whitespace entering data.dat 
+Main.java
+	- created Headmate dummy to act as temp storage before proper handling
+	* setup()
+		- skips blank lines in data.dat
+		- added several cases to the switch statement to handle reading in saved data into program memory
+Headmate.java
+	- patched bug that lead to extra whitespace entering data.dat

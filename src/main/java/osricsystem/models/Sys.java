@@ -30,12 +30,13 @@ public class Sys{
 	public void setDesc(String desc){ this.desc=desc; }
 
 	// other
-	public void add(Headmate h){ this.headmates.add(h); }
+	public void add(Headmate headmate){ this.headmates.add(headmate); }
+	public void add(Headmate... headmates){ for(Headmate h : headmates) this.add(h); }
 	public String toString(){
 		StringBuilder sb=new StringBuilder();
 
-		sb.append("System Name: "+ (name!=null? getName(): ""));
-		sb.append("\nSystem Bio: "+ (desc!=null? getDesc(): ""));
+		sb.append("System Name:"+ (name!=null? getName(): ""));
+		sb.append("\nSystem Bio:"+ (desc!=null? getDesc(): ""));
 		sb.append("\nHeadmate List:"+getListString());
 
 		return sb.toString();
