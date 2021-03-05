@@ -1,58 +1,29 @@
 package osricsystem.models;
 
-import java.util.LinkedList;
-
 public class Headmate{
-	private String name, pronouns, subsystem, gender, age, desc;
-	private final LinkedList<String> jobs;
+	private static int nextId=0;
+	private String color, displayName, id;
 
-	public Headmate(String name){
-		this.name=name;
-		jobs=new LinkedList<String>();
-	}
+	public Headmate(String displayName){ this.displayName=displayName; }
 
 	// GETTERS \\
-	public String getName(){ return name; }
-	public String getPronouns(){ return pronouns; }
-	public String getSubsystem(){ return subsystem; }
-	public String getGender(){ return gender; }
-	public String getAge(){ return age; }
-	public String getDesc(){ return desc; }
-	public String[] getJobs(){ return jobs.toArray(new String[jobs.size()]); }
+	public String getColor(){ return this.color; }
+	public String getDisplayName(){ return displayName; }
+	public String getId(){ return id; }
 
 	// SETTERS \\
-	public void setName(String name){ this.name=name; }
-	public void setPronouns(String pronouns){ this.pronouns=pronouns; }
-	public void setSubsystem(String subsystem){ this.subsystem=subsystem; }
-	public void setGender(String gender){ this.gender=gender; }
-	public void setAge(String age){ this.age=age; }
-	public void setDesc(String desc){ this.desc=desc; }
-	public void setJobs(String... jobs){
-		clearJobs();
-		addJobs(jobs);
-	}
-	public void addJobs(String... jobs){ for(String job : jobs) addJob(job); }
-	public void addJob(String job){ this.jobs.add(job); }
-
-	// CLEAR \\
-	public void clearName(){ this.name=null; }
-	public void clearPronouns(){ this.pronouns=null; }
-	public void clearSubsystem(){ this.subsystem=null; }
-	public void clearGender(){ this.gender=null; }
-	public void clearAge(){ this.age=null; }
-	public void clearDesc(){ this.desc=null; }
-	public void clearJobs(){ this.jobs.clear(); }
+	public void setColor(String color){ this.color=color; }
+	public void setDisplayName(String displayName){ this.displayName=displayName; }
+	public void setId(String id){ this.id=id; }
 
 	// other
+	public void generateNewId(){ this.id=String.format("%05d", nextId++); }
 	public String toString(){
 		StringBuilder sb=new StringBuilder();
 
-		sb.append("\n\tName: "+ (name!=null? getName(): ""));
-		sb.append("\n\tPronouns: "+ (pronouns!=null? getPronouns(): ""));
-		sb.append("\n\tSubsystem: "+ (subsystem!=null? getSubsystem(): ""));
-		sb.append("\n\tGender: "+ (gender!=null? getGender(): ""));
-		sb.append("\n\tAge: "+ (age!=null? getAge(): ""));
-		sb.append("\n\tBio: "+ (desc!=null? getDesc(): ""));
+		sb.append("\n\tDisplay Name: "+ (displayName!=null? getDisplayName(): ""));
+		sb.append("\n\tColor: "+ (color!=null? getColor(): ""));
+		sb.append("\n\tId: "+ (id!=null? getId(): ""));
 
 		return sb.toString();
 	}

@@ -46,3 +46,29 @@ PKSystem.java
 	- now in compliance with formatting standard
 PKMmeber.java
 	- now in compliance with formatting standard
+
+prototype 6
+.gitignore
+	- updated to use directories instead of individual files
+.gitmodules
+	- added reference to MC-Plural-Proxy project as submodule
+MC-Plural-Proxy
+	- see above
+JsonConverter.java
+	- added helper function for simpler JSON serialization
+PKConverter.java
+	- moved logic for to/from native model conversion
+Main.java
+	- overhauled to prepare for PK to data pack workflow
+Headmate.java
+	- updated properties to more closely match PK and what is possible within the data pack
+PKMember.java
+	- finished implementing properties for PK export
+PKProxyTag.java
+	- see above
+PKSwitch.java
+	- see above
+PKSystem.java
+	- see above
+Sys.java
+	- updated properties to match PK/data pack
