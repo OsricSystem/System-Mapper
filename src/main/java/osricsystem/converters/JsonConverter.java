@@ -8,27 +8,27 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 
 public class JsonConverter{
-    private static final ObjectMapper mapper=new ObjectMapper();
-    private static final ObjectWriter writerDefault;
-    private static final ObjectWriter writerPretty;
+	private static final ObjectMapper mapper=new ObjectMapper();
+	private static final ObjectWriter writerDefault;
+	private static final ObjectWriter writerPretty;
 
-    private JsonConverter(){}
+	private JsonConverter(){}
 
-    static{
-        DefaultPrettyPrinter printer=new DefaultPrettyPrinter();
-        DefaultIndenter indenter=new DefaultIndenter("\t", DefaultIndenter.SYS_LF);
-        printer.indentObjectsWith(indenter);
-        printer.indentArraysWith(indenter);
+	static{
+		DefaultPrettyPrinter printer=new DefaultPrettyPrinter();
+		DefaultIndenter indenter=new DefaultIndenter("\t", DefaultIndenter.SYS_LF);
+		printer.indentObjectsWith(indenter);
+		printer.indentArraysWith(indenter);
 
-        writerDefault=mapper.writer();
-        writerPretty=mapper.writer(printer);
-    }
+		writerDefault=mapper.writer();
+		writerPretty=mapper.writer(printer);
+	}
 
-    // Serialization
-    public static <T> T fromJson(String input, Class<T> cls) throws JsonMappingException, JsonProcessingException{
-        return mapper.readValue(input, cls);
-    }
-    public static String toJson(Object value, boolean prettyPrint) throws JsonProcessingException{
-        return (prettyPrint? writerPretty: writerDefault).writeValueAsString(value);
-    }
+	// Serialization
+	public static <T> T fromJson(String input, Class<T> cls) throws JsonMappingException, JsonProcessingException{
+		return mapper.readValue(input, cls);
+	}
+	public static String toJson(Object value, boolean prettyPrint) throws JsonProcessingException{
+		return (prettyPrint? writerPretty: writerDefault).writeValueAsString(value);
+	}
 }
