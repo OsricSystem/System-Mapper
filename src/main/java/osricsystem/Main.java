@@ -25,6 +25,7 @@ public class Main{
 	private static final Path dataPackTemplateDir=Paths.get("MC-Plural-Proxy").toAbsolutePath();
 	private static final Path dataPackOutputDir=Paths.get("output").toAbsolutePath();
 	private static Sys system;
+	private static Headmate dummy;
 
 	public static void main(String[] args){
 		try{
@@ -32,7 +33,7 @@ public class Main{
 			Path exportedJsonFile=Paths.get("temp", "system.json");
 			if(!jsonFile.exists() && exportedJsonFile.toFile().exists()){
 				System.out.println("Copying exported json file");
-				// Files.copy(exportedJsonFile, jsonFileInputFile.toPath());
+				Files.copy(exportedJsonFile, jsonFile.toPath());
 			}
 
 			// initialize the system
@@ -46,6 +47,14 @@ public class Main{
 					system.add(h);
 				}
 			}
+
+			// dummy = new Headmate("Tayto");
+			// dummy.generateNewId();
+			// dummy.setAge("18");
+			// dummy.setDesc("cat");
+			// dummy.setGender("catgender");
+			// dummy.setPronouns("Nya/Nyam");
+			// system.add(dummy);
 
 			// edit the system
 			// updateSystem();
@@ -96,7 +105,61 @@ public class Main{
 		// TODO: copy/generate files
 	}
 
-	// read the system from a file
+	// read the system from a DAT file
+	@SuppressWarnings("unused")
+	private static void loadSystemDat(){
+		try(Scanner reader=new Scanner(datFile)){
+			while(reader.hasNextLine()){
+
+				// reads in a line from data.dat, skipping if blank
+				String line=reader.nextLine();
+				int index=line.indexOf(':');
+				if(index==-1) continue;
+				String label=line.substring(0, index);
+				String data=line.substring(index+1);
+
+				// enters file data into program memory
+				switch(label.trim()){
+				case "System Name":
+					system=new Sys(data);
+					break;
+				case "System Bio":
+					if(data.contains("\\n")) data=data.replace("\\n", "\n");
+					system.setDesc(data);
+					break;
+				case "System Id":
+					system.setId(data);
+					break;
+				case "Display Name":
+					dummy=new Headmate(data);
+					system.add(dummy);
+					break;
+				case "Color":
+					dummy.setColor(data);
+					break;
+				// case "Pronouns":
+				// dummy.setPronouns(data);
+				// break;
+				// case "Subsystem":
+				// // implement subsystem handler
+				// break;
+				// case "Gender":
+				// dummy.setGender(data);
+				// break;
+				// case "Age":
+				// dummy.setAge(data);
+				// break;
+				// case "Bio":
+				// dummy.setDesc(data);
+				// break;
+				}
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+
+	// read the system from a JSON file
 	private static void loadSystemJson() throws JsonMappingException, JsonProcessingException, IOException{
 		PKSystem deserialized=JsonConverter.fromJson(Files.readString(jsonFile.toPath()), PKSystem.class);
 		system=PKConverter.toNative(deserialized);

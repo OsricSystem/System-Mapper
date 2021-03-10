@@ -33,13 +33,14 @@ public class Sys{
 	public void setTag(String tag){ this.tag=tag; }
 
 	// other
-	public void add(Headmate h){ this.headmates.add(h); }
+	public void add(Headmate headmate){ this.headmates.add(headmate); }
+	public void add(Headmate... headmates){ for(Headmate h : headmates) this.add(h); }
 	public void generateNewId(){ this.id=String.format("%05d", nextId++); }
 	public String toString(){
 		StringBuilder sb=new StringBuilder();
 
 		sb.append("System Name: "+ (name!=null? getName(): ""));
-		sb.append("\nSystem Bio: "+ (desc!=null? getDesc(): ""));
+		sb.append("\nSystem Bio: "+ (desc!=null? getDesc().replace("\n", "\\n"): ""));
 		sb.append("\nSystem Id: "+ (id!=null? getId(): ""));
 		sb.append("\nSystem Icon: "+ (icon!=null? getIcon(): ""));
 		sb.append("\nSystem Tag: "+ (tag!=null? getTag(): ""));
