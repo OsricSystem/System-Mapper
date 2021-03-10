@@ -17,6 +17,7 @@ public class Main{
 	private static Scanner in;
 	private static File file;
 	private static Sys system;
+	private static Headmate dummy;
 
 	public static void main(String[] args){
 		in=new Scanner(System.in);
@@ -26,8 +27,15 @@ public class Main{
 			if(!file.exists() || file.length()==0) init();
 			else setup();
 
-			system.add(new Headmate("Tayto"));
-			// edit();
+			/*
+			dummy=new Headmate("Tayto");
+			dummy.setAge("18");
+			dummy.setDesc("cat");
+			dummy.setGender("catgender");
+			dummy.setPronouns("Nya/Nyam");
+			system.add(dummy);
+			*/
+			edit();
 
 			// XML formatter
 			ObjectMapper mapper=new ObjectMapper();
@@ -59,13 +67,40 @@ public class Main{
 	private static void setup(){
 		try(Scanner reader=new Scanner(file)){
 			while(reader.hasNextLine()){
+
+				// reads in a line from data.dat, skipping if blank
 				String line=reader.nextLine();
 				int index=line.indexOf(':');
+				if(index==-1) continue;
 				String label=line.substring(0, index);
 				String data=line.substring(index+1);
-				switch(label){
+
+				// enters file data into program memory
+				switch(label.trim()){
 				case "System Name":
 					system=new Sys(data);
+					break;
+				case "System Bio":
+					system.setDesc(data);
+					break;
+				case "Name":
+					dummy=new Headmate(data);
+					system.add(dummy);
+					break;
+				case "Pronouns":
+					dummy.setPronouns(data);
+					break;
+				case "Subsystem":
+					// implement subsystem handler
+					break;
+				case "Gender":
+					dummy.setGender(data);
+					break;
+				case "Age":
+					dummy.setAge(data);
+					break;
+				case "Bio":
+					dummy.setDesc(data);
 					break;
 				}
 			}
