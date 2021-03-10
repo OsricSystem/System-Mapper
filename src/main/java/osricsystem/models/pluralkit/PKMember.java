@@ -1,27 +1,15 @@
 package osricsystem.models.pluralkit;
 
-import com.fasterxml.jackson.annotation.JsonGetter;
-import com.fasterxml.jackson.annotation.JsonSetter;
-
-import osricsystem.models.Headmate;
+import java.util.Date;
 
 public class PKMember{
-	private String name;
+	public String id, name, display_name, description;
+	public String birthday; // TODO: Is a string?
+	public String pronouns, color, avatar_url;
+	public PKProxyTag[] proxy_tags;
+	public boolean keep_proxy;
+	public long message_count;
+	public Date created;
 
 	public PKMember(){}
-	public static PKMember fromNative(Headmate headmate){
-		PKMember result=new PKMember();
-
-		result.setName(headmate.getName());
-
-		return result;
-	}
-
-	// GETTERS \\
-	@JsonGetter
-	public String getName(){ return this.name; }
-
-	// SETTERS \\
-	@JsonSetter
-	public void setName(String name){ this.name=name; }
 }
